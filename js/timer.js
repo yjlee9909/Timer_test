@@ -6,3 +6,9 @@ const inpSec = main.querySelector('.bck-img-sec');
 const disStartBtn = main.querySelector('.btn-start-disabled');
 const disResetBtn = main.querySelector('.btn-reset-disabled');
 
+inpSec.addEventListener('click', (event) => {
+
+});
+
+disStartBtn.addEventListener('click', () => {
+})
