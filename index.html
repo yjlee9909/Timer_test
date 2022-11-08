@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <title>타이머</title>
+</head>
+<body>
+    <main id="app">
+        <h1 class="logo">
+            <img class="logo-img" src="images/weniv-logo.svg" alt="위니브">
+        </h1>
+        <article>
+            <h2 class="timer-txt">TIMER</h2>
+            <div class="line"></div>
+            <div class="line two"></div>
+            
+            
+            <section class="section-timer">
+                <div class="time-hour">
+                    <p>HRS</p>
+                    <div class="bck-img"></div>
+                    <span class="hour">00</span>
+                </div>
+                <img class="dot" src="images/dot.png" alt="">
+                <div class="time-min">
+                    <p>MIN</p>
+                    <div class="bck-img"></div>
+                    <span class="min">00</span>
+                </div>
+                <img class="dot" src="images/dot.png" alt="">
+                <div class="time-sec">
+                    <p>SEC</p>
+                    <div class="bck-img"></div>
+                    <span class="sec">00</span>
+                </div>
+            </section>
+
+            
+            <button class="btn-start-disabled" type="button">
+                <img src="images/start-disabled.png" alt="">
+            </button>
+            <button class="btn-reset-disabled" type="button">
+                <img src="images/reset-disabled.png" alt="">
+            </button>
+            
+        </article>
+        <footer id="footer">
+            &copy; WENIV Corp.
+        </footer>
+    </main>
+    <script src="js/timer.js"></script>
+</body>
+</html>

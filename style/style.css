@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+#app {
+    height: 100vh;
+    background: radial-gradient(96.74% 276.79% at 3.59% 5.28%, #F0F4FF 0%, #A5B6EE 100%); 
+    text-align: center;
+}
+
+#app .logo-img {
+    margin-top: 72px;
+    width: 244px;
+    height: 48px;
+}
+
+#app article {
+    width: 400px;
+    height: 360px;
+    margin: 60px auto;
+    background: linear-gradient(144.07deg, #5572BB 2.13%, #374B7C 102.97%);
+    box-shadow: 20px 20px 60px 10px rgba(55, 75, 124, 0.4);
+    border-radius: 16px;
+    display: block;
+    
+}
+
+#app article .timer-txt {
+    display: inline-block;
+    font-family: 'Pretendard-Regular';
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 48px 164px 23px 163px;
+}
+#app article .line {
+    width: 312px;
+    height: 1px;
+    background: #3D538A;
+    margin-left: 44px;
+    margin-right: 44px;
+}
+#app article .line.two {
+    background: #5B75B4;
+} 
+
+#app .section-timer {
+    margin: 32px 58px 40px 58px;
+    display: flex;
+}
+.time-hour,
+.time-min,
+.time-sec {
+    position: relative;
+}
+
+#app .section-timer p {
+    font-family: 'Pretendard-Regular';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #A5B6EE;
+    margin-bottom: 4px;
+}
+
+#app .section-timer .bck-img {
+    width: 80px;
+    height: 80px;
+    background-image: url(../images/box.png);
+}
+#app .section-timer span {
+    font-family: 'Pretendard-Regular';
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    position: absolute;
+    top: 34px;
+    left: 17px;
+}
+#app .section-timer img.dot{
+    width: 6px;
+    height: 26px;
+    margin-right: 8px;
+    margin-left: 8px;
+    justify-content: center;
+    position: relative;
+    top: 44px;
+}
+
+#app button img {
+    width: 112px;
+    height: 48px;
+}
+#app .btn-start-disabled {
+    margin-right: 12px;
+}
+
+#footer {
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: #8596BF;
+}
