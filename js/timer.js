@@ -11,17 +11,30 @@ const resetImg = document.querySelector('.img-reset');
 
 const defStartBtn = document.querySelector('.defStart');
 
+
+
 let timeHour = 00;
 let timeMin = 00;
 let timeSec = 00;
-
+let time = 0;
+let timer;
+// if (time === 0) {
+//     disStartBtn.disabled = true;
+//     disResetBtn.disabled = true;
+// }
 
 const addTime = (name) => {
     // 초
     if (name === '.sec') {
         const secTxt = main.querySelector(name);
+        time += 10;
         timeSec += 10;
+        if (timeSec > 60) {
+            timeSec = 60;
+        }
+        timeSec = String(time % 60).padStart(2,'0');
         secTxt.textContent = timeSec;
+        // console.log(time)
     }
     // 분
     if (name === '.min') {
@@ -30,6 +43,11 @@ const addTime = (name) => {
         if (timeMin < 10) {
             minTxt.textContent = String(timeMin).padStart(2,'0');
         } else {
+            if (timeMin > 60) {
+                timeMin = 60;
+            } else {
+                time += 60;
+            }
             minTxt.textContent = timeMin;
         }
     }
@@ -40,6 +58,12 @@ const addTime = (name) => {
         if (timeHour < 10) {
             hourTxt.textContent = String(timeHour).padStart(2,'0');
         } else {
+            if (timeHour > 24) {
+                timeHour = 24;
+            } else {
+                time += 3600;
+                // timeHour = Math.floor(time / 3600);
+            }
             hourTxt.textContent = timeHour;
         }
         
@@ -98,9 +122,34 @@ const lightUpBtn = () => {
     // 불 들어온 start 버튼 누르면 pause 버튼으로 변경하기
     pauseBtn();
     resetBtn();
+    timerStart();
 }
 
+// 타이머 기능 
+// 시간 값이 > 0 이라면 1초씩 줄어들기
+// 시간, 분, 초까지 다 합산하여 1초씩 줄어들기
+// const timerStart = () => {
+//     timer = setInterval(() => {
+//         time--;
+//         timeSec--;
+//         // 10초 미만
+//         if (timeSec < 10) {
+//             inpSec.textContent = String(timeSec).padStart(2, '0');
+//         } else {
+//             inpSec.textContent = timeSec;
+//         }
 
+//         // 분까지
+//         // if (timeMin > 0 && timeMin < )
+//         if (timeMin < 10) {
+//             inpMin.textContent = String(timeMin).padStart(2, '0');
+//         } else {
+//             inpMin.textContent = timeMin;
+//         }
+//         timeMin--;
+
+//     }, 1000);
+// }
 
 
 inpSec.addEventListener('click', () => {

@@ -20,23 +20,23 @@
             
             
             <section class="section-timer">
-                <div class="time-hour">
-                    <p>HRS</p>
-                    <div class="bck-img-hour"></div>
-                    <span class="hour">00</span>
-                </div>
+                <h2>시간입력</h2>
+                <label class="time-hour-lb">HRS
+                    <input class="hour" max="23" min = '0' type="number" value="00" maxlength="2"></input>
+                </label>
+                
                 <img class="dot" src="images/dot.png" alt="">
-                <div class="time-min">
-                    <p>MIN</p>
-                    <div class="bck-img-min"></div>
-                    <span class="min">00</span>
-                </div>
+                
+                <label class="time-min-lb">MIN
+                    <input class="min" max="59" min = '0' type="number" value="00" maxlength="2"></input>
+                </label>
+                
                 <img class="dot" src="images/dot.png" alt="">
-                <div class="time-sec">
-                    <p>SEC</p>
-                    <div class="bck-img-sec"></div>
-                    <span class="sec">00</span>
-                </div>
+                
+                <label class="time-sec-lb">SEC
+                    <input class="sec" max="59" min = '0' type="number" value="00" maxlength="2"></input>
+                </input>
+                
             </section>
 
             
@@ -52,6 +52,6 @@
             &copy; WENIV Corp.
         </footer>
     </main>
-    <script src="js/timer.js"></script>
+    <script src="js/timer2.js"></script>
 </body>
 </html>
