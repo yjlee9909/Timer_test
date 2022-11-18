@@ -22,29 +22,32 @@
             <section class="section-timer">
                 <h2>시간입력</h2>
                 <label class="time-hour-lb">HRS
-                    <input class="hour" max="23" min = '0' type="number" value="00" maxlength="2"></input>
+                    <input class="hour" min = '0' type="number" value="00" maxlength="2" oninput="inputLenFunc()"></input>
                 </label>
                 
                 <img class="dot" src="images/dot.png" alt="">
                 
                 <label class="time-min-lb">MIN
-                    <input class="min" max="59" min = '0' type="number" value="00" maxlength="2"></input>
+                    <input class="min" min = '0' type="number" value="00" maxlength="2" oninput="inputLenFunc()"></input>
                 </label>
                 
                 <img class="dot" src="images/dot.png" alt="">
                 
                 <label class="time-sec-lb">SEC
-                    <input class="sec" max="59" min = '0' type="number" value="00" maxlength="2"></input>
-                </input>
+                    <input class="sec" min = '0' type="number" value="00" maxlength="2" oninput="inputLenFunc()"></input>
+                </label>
                 
             </section>
 
             
-            <button class="btn-start-disabled" type="button">
-                <img class="img-start" src="images/start-disabled.png" alt="">
+            <button class="btn-start disabled" type="button">
+                <img class="img-start" src="images/start-disabled.png" alt="비활성화 시작 버튼">
             </button>
-            <button class="btn-reset-disabled" type="button">
-                <img class="img-reset" src="images/reset-disabled.png" alt="">
+            <button class="btn-pause hidden" type="button">
+                <img class="img-pause" src="images/pause.png" alt="정지 버튼">
+            </button>
+            <button class="btn-reset disabled" type="button">
+                <img class="img-reset" src="images/reset-disabled.png" alt="비활성화 초기화 버튼">
             </button>
             
         </article>

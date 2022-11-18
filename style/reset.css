@@ -53,6 +53,9 @@ button {
 	margin: 0;
 	background-color:transparent;
 }
+button.hidden {
+	display: none;
+}
 
 input {
 	padding: 0;

@@ -93,7 +93,7 @@ input.hour, input.min, input.sec {
     height: 48px;
     cursor: pointer;
 }
-#app .btn-start-disabled {
+#app .btn-start.disabled {
     margin-right: 12px;
 }
 
