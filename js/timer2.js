@@ -31,11 +31,10 @@ function inputLenFunc() {
     if (inpMin.value.length > 2) {
         inpMin.value = inpMin.value.slice(0, 2);
     };
-    
+
     if (inpHour.value.length > 2) {
         inpHour.value = inpHour.value.slice(0, 2);
     };
+    console.log(inpSec.value)
 }
-inpSec.addEventListener('input', inputLenFunc);
-inpMin.addEventListener('input', inputLenFunc);
-inpHour.addEventListener('input', inputLenFunc);
+[inpSec, inpMin, inpHour].map(item => item.addEventListener('input', inputLenFunc));
