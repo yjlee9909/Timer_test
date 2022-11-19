@@ -6,6 +6,7 @@ const inpSec = main.querySelector('.sec');
 
 const nonStartBtn = main.querySelector('.btn-start.disabled');
 const nonResetBtn = main.querySelector('.btn-reset.disabled');
+const pauseBtn = main.querySelector('.btn-pause.hidden')
 // console.log(nonResetBtn)
 
 const startImg = document.querySelector('.img-start');
@@ -23,7 +24,7 @@ inpMin.textContent = String(timeMin).padStart(2,'0');
 inpSec.textContent = String(timeSec).padStart(2,'0');
 
 // input 입력 글자수 제한하기 (number)
-function inputLenFunc() {
+const inputLenFunc = () => {
     if (inpSec.value.length > 2) {
         inpSec.value = inpSec.value.slice(0, 2);
     };
@@ -37,4 +38,25 @@ function inputLenFunc() {
     };
     console.log(inpSec.value)
 }
+
+const activeBtn = () => {
+    switch(!(inpSec.value || inpMin.value || inpHour.value)) {
+        case true:
+
+            break;
+        // 하나라도 입력한 경우
+        case false:
+            nonStartBtn.classList.remove('disabled');
+            nonStartBtn.classList.add('startBtnOn');
+            startImg.setAttribute('src', './images/start-default.png');
+            nonResetBtn.classList.remove('disabled');
+            nonResetBtn.classList.add('resetBtnOn');
+            resetImg.setAttribute('src', './images/reset-default.png');
+            break;
+    }
+}
+
 [inpSec, inpMin, inpHour].map(item => item.addEventListener('input', inputLenFunc));
+
+// 값 입력받으면 버튼 활성화
+[inpSec, inpMin, inpHour].map(item => item.addEventListener('keyup', activeBtn));
