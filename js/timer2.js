@@ -12,6 +12,10 @@ const pauseBtn = main.querySelector('.btn-pause.hidden')
 const startImg = document.querySelector('.img-start');
 const resetImg = document.querySelector('.img-reset');
 
+const onStartBtn = document.querySelector('btn-start.startBtnOn');
+console.log(onStartBtn);
+
+
 let timer;
 let time = 0;
 let timeHour = 0;
@@ -60,3 +64,7 @@ const activeBtn = () => {
 
 // 값 입력받으면 버튼 활성화
 [inpSec, inpMin, inpHour].map(item => item.addEventListener('keyup', activeBtn));
+
+// onStartBtn.addEventListener('click', () => {
+//     console.log('hi')
+// });
