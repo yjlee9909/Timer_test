@@ -4,16 +4,18 @@ const inpHour = main.querySelector('.hour');
 const inpMin = main.querySelector('.min');
 const inpSec = main.querySelector('.sec');
 
-const nonStartBtn = main.querySelector('.btn-start.disabled');
-const nonResetBtn = main.querySelector('.btn-reset.disabled');
+const nonStartBtn = main.querySelector('.btn-start');
+const nonResetBtn = main.querySelector('.btn-reset');
 const pauseBtn = main.querySelector('.btn-pause.hidden')
 // console.log(nonResetBtn)
 
 const startImg = document.querySelector('.img-start');
 const resetImg = document.querySelector('.img-reset');
 
-const onStartBtn = document.querySelector('btn-start.startBtnOn');
-console.log(onStartBtn);
+const onStartBtn = document.querySelector('.startBtnOn');
+
+const inputGroup = [inpSec, inpMin, inpHour];
+
 
 
 let timer;
@@ -40,33 +42,71 @@ const inputLenFunc = () => {
     if (inpHour.value.length > 2) {
         inpHour.value = inpHour.value.slice(0, 2);
     };
-    console.log(inpSec.value)
+    // console.log(inpSec.value)
 }
 
 const activeBtn = () => {
     switch(!(inpSec.value || inpMin.value || inpHour.value)) {
-        case true:
-
-            break;
-        // 하나라도 입력한 경우
         case false:
-            nonStartBtn.classList.remove('disabled');
-            nonStartBtn.classList.add('startBtnOn');
-            startImg.setAttribute('src', './images/start-default.png');
-            nonResetBtn.classList.remove('disabled');
-            nonResetBtn.classList.add('resetBtnOn');
-            resetImg.setAttribute('src', './images/reset-default.png');
+            startImg.src = './images/start-default.png';
+            resetImg.src = './images/reset-default.png';
             break;
-    }
-    
+    } 
 }
 
-[inpSec, inpMin, inpHour].map(item => item.addEventListener('input', inputLenFunc));
+const startTime = (totalTime) => {
+    // console.log(totalTime)
+    timer = setInterval(() => {
+        totalTime--;
+        updateTotalTime(totalTime);
+        // console.log(totalTime)
+        if (totalTime < 0) {
+            clearInterval(timer);
+            alert('종료!!');
+            inpHour.value = String(timeHour).padStart(2,'0');
+            inpMin.value = String(timeMin).padStart(2,'0');
+            inpSec.value = String(timeSec).padStart(2,'0');
+            // console.log('finish')
+        }
+    }, 1000);
+}
+const updateTotalTime = (totalTime) => {
+    const secUpd = totalTime % 60;
+    const minUpd = Math.floor((totalTime / 60) % 60);
+    const hourUpd = Math.floor((totalTime / 60) / 60);
+    console.log(secUpd)
+    // console.log(minUpd)
+    // console.log(hourUpd)
+
+    // 초
+    if (secUpd < 10) {
+        inpSec.value = secUpd.toString().padStart(2, "0")
+    } else {
+        inpSec.value = secUpd;
+    }
+}
+const resetTime = () => {
+    if (totalTime <= 0) {
+
+        clearInterval(timer);
+    }
+}
+
+
+inputGroup.map(item => item.addEventListener('input', inputLenFunc));
 
 // 값 입력받으면 버튼 활성화
-[inpSec, inpMin, inpHour].map(item => item.addEventListener('keyup', activeBtn));
+inputGroup.map(item => item.addEventListener('keyup', activeBtn));
 
 // 값 초기화
-[inpSec, inpMin, inpHour].map(item => item.addEventListener('click', (e) => {
+inputGroup.map(item => item.addEventListener('click', (e) => {
     e.currentTarget.value = '';
 }));
+
+nonStartBtn.addEventListener('click', () => {
+    const secNum = parseInt(inpSec.value);
+    const minNum = parseInt(inpMin.value);
+    const houNum = parseInt(inpHour.value);
+    const totalTime = secNum + minNum * 60 + houNum * 60 * 60;
+    startTime(totalTime)
+});
