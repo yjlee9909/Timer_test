@@ -58,6 +58,7 @@ const activeBtn = () => {
             resetImg.setAttribute('src', './images/reset-default.png');
             break;
     }
+    
 }
 
 [inpSec, inpMin, inpHour].map(item => item.addEventListener('input', inputLenFunc));
@@ -65,6 +66,7 @@ const activeBtn = () => {
 // 값 입력받으면 버튼 활성화
 [inpSec, inpMin, inpHour].map(item => item.addEventListener('keyup', activeBtn));
 
-// onStartBtn.addEventListener('click', () => {
-//     console.log('hi')
-// });
+// 값 초기화
+[inpSec, inpMin, inpHour].map(item => item.addEventListener('click', (e) => {
+    e.currentTarget.value = '';
+}));
