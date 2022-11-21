@@ -69,12 +69,11 @@ const pauseTime = () => {
 
 const startTime = (totalTime) => {
     // console.log(totalTime)
-    
     timer = setInterval(() => {
         totalTime--;
         updateTotalTime(totalTime);
         // console.log(totalTime)
-        if (totalTime < 0) {
+        if (totalTime <= 0) {
             clearInterval(timer);
             alert('종료!!');
             inpHour.value = String(timeHour).padStart(2,'0');
@@ -88,7 +87,7 @@ const updateTotalTime = (totalTime) => {
     const secUpd = totalTime % 60;
     const minUpd = Math.floor((totalTime / 60) % 60);
     const hourUpd = Math.floor((totalTime / 60) / 60);
-    console.log(secUpd)
+    console.log(minUpd, secUpd)
     // console.log(minUpd)
     // console.log(hourUpd)
 
@@ -97,6 +96,18 @@ const updateTotalTime = (totalTime) => {
         inpSec.value = secUpd.toString().padStart(2, "0")
     } else {
         inpSec.value = secUpd;
+    }
+    // 분
+    if (minUpd < 10) {
+        inpMin.value = minUpd.toString().padStart(2, "0")
+    } else {
+        inpMin.value = minUpd;
+    }
+    // 시간
+    if (hourUpd < 10) {
+        inpHour.value = hourUpd.toString().padStart(2, "0")
+    } else {
+        inpHour.value = hourUpd;
     }
 }
 const resetTime = () => {
