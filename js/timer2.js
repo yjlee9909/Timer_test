@@ -28,6 +28,7 @@ inpSec.textContent = String(timeSec).padStart(2,'0');
 
 // 초기 start 버튼 비활성화하기
 nonStartBtn.setAttribute('disabled', true);
+nonResetBtn.setAttribute('disabled', true);
 
 // input 입력 글자수 제한하기 (number)
 const inputLenFunc = () => {
@@ -54,6 +55,7 @@ const activeBtn = () => {
     } 
     // 값 입력하고 start 버튼 클릭한 경우 버튼 활성화
     nonStartBtn.removeAttribute('disabled');
+    nonResetBtn.removeAttribute('disabled');
 }
 const changeBtn = () => {
     nonStartBtn.classList.add('hidden');
@@ -61,13 +63,13 @@ const changeBtn = () => {
     
 }
 const pauseTime = () => {
-
     nonStartBtn.classList.remove('hidden');
     pauseBtn.classList.add('hidden');
     clearInterval(timer);
 }
 
 const startTime = (totalTime) => {
+    
     // console.log(totalTime)
     timer = setInterval(() => {
         totalTime--;
@@ -110,11 +112,25 @@ const updateTotalTime = (totalTime) => {
         inpHour.value = hourUpd;
     }
 }
+// 0미만인경우 종료시키기 추가하기
+// const resetTime = () => {
+//     if (totalTime <= 0) {
+//         clearInterval(timer);
+//     }
+// 입력안된값 다 00으로 만들어주기
+// }
 const resetTime = () => {
-    if (totalTime <= 0) {
+    clearInterval(timer);
+    inpHour.value = String(timeHour).padStart(2,'0');
+    inpMin.value = String(timeMin).padStart(2,'0');
+    inpSec.value = String(timeSec).padStart(2,'0');
 
-        clearInterval(timer);
-    }
+    nonStartBtn.setAttribute('disabled', true);
+    nonResetBtn.setAttribute('disabled', true);
+    nonStartBtn.classList.remove('hidden');
+    pauseBtn.classList.add('hidden');
+    startImg.src = './images/start-disabled.png';
+    resetImg.src = './images/reset-disabled.png';
 }
 
 
@@ -129,8 +145,16 @@ inputGroup.map(item => item.addEventListener('click', (e) => {
 }));
 
 nonStartBtn.addEventListener('click', () => {
-    
-
+    // 값이 빈 경우 0으로 채워주기
+    if (inpHour.value === '') {
+        inpHour.value = String(timeHour).padStart(2,'0');
+    }
+    if (inpMin.value === '') {
+        inpMin.value = String(timeMin).padStart(2,'0');
+    }
+    if (inpSec.value === '') {
+        inpSec.value = String(timeSec).padStart(2,'0');
+    }
     const secNum = parseInt(inpSec.value);
     const minNum = parseInt(inpMin.value);
     const houNum = parseInt(inpHour.value);
@@ -139,3 +163,4 @@ nonStartBtn.addEventListener('click', () => {
     changeBtn();
 });
 pauseBtn.addEventListener('click', pauseTime);
+nonResetBtn.addEventListener('click', resetTime);
