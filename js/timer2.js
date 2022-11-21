@@ -11,11 +11,8 @@ const pauseBtn = main.querySelector('.btn-pause.hidden')
 
 const startImg = document.querySelector('.img-start');
 const resetImg = document.querySelector('.img-reset');
-
 const onStartBtn = document.querySelector('.startBtnOn');
-
 const inputGroup = [inpSec, inpMin, inpHour];
-
 
 
 let timer;
@@ -28,6 +25,9 @@ let timeSec = 0;
 inpHour.textContent = String(timeHour).padStart(2,'0');
 inpMin.textContent = String(timeMin).padStart(2,'0');
 inpSec.textContent = String(timeSec).padStart(2,'0');
+
+// 초기 start 버튼 비활성화하기
+nonStartBtn.setAttribute('disabled', true);
 
 // input 입력 글자수 제한하기 (number)
 const inputLenFunc = () => {
@@ -52,10 +52,24 @@ const activeBtn = () => {
             resetImg.src = './images/reset-default.png';
             break;
     } 
+    // 값 입력하고 start 버튼 클릭한 경우 버튼 활성화
+    nonStartBtn.removeAttribute('disabled');
+}
+const changeBtn = () => {
+    nonStartBtn.classList.add('hidden');
+    pauseBtn.classList.remove('hidden');
+    
+}
+const pauseTime = () => {
+
+    nonStartBtn.classList.remove('hidden');
+    pauseBtn.classList.add('hidden');
+    clearInterval(timer);
 }
 
 const startTime = (totalTime) => {
     // console.log(totalTime)
+    
     timer = setInterval(() => {
         totalTime--;
         updateTotalTime(totalTime);
@@ -104,9 +118,13 @@ inputGroup.map(item => item.addEventListener('click', (e) => {
 }));
 
 nonStartBtn.addEventListener('click', () => {
+    
+
     const secNum = parseInt(inpSec.value);
     const minNum = parseInt(inpMin.value);
     const houNum = parseInt(inpHour.value);
     const totalTime = secNum + minNum * 60 + houNum * 60 * 60;
-    startTime(totalTime)
+    startTime(totalTime);
+    changeBtn();
 });
+pauseBtn.addEventListener('click', pauseTime);
